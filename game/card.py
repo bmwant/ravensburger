@@ -34,7 +34,6 @@ class Card(object):
         self.chain_next = chain_next or []
 
 
-
 cards_registry = [
     # epoch I
     ## brown
@@ -259,7 +258,7 @@ cards_registry = [
         epoch=1,
         players_limit=3,
         chain_next=[CardLink(name='STABLES'), CardLink(name='DISPENSARY')],
-        rewards=[Invention(invention_type=InventionType.METER)],
+        rewards=[Invention(inventions=[InventionType.METER])],
         price=[ResourceType.TEXTILE],
     ),
     Card(
@@ -268,7 +267,7 @@ cards_registry = [
         epoch=1,
         players_limit=5,
         chain_next=[CardLink(name='STABLES'), CardLink(name='DISPENSARY')],
-        rewards=[Invention(invention_type=InventionType.METER)],
+        rewards=[Invention(inventions=[InventionType.METER])],
         price=[ResourceType.TEXTILE],
     ),
     Card(
@@ -280,7 +279,7 @@ cards_registry = [
             CardLink(name='LABORATORY'),
             CardLink(name='ARCHERY RANGE'),
         ],
-        rewards=[Invention(invention_type=InventionType.GEAR)],
+        rewards=[Invention(inventions=[InventionType.GEAR])],
         price=[ResourceType.GLASS],
     ),
     Card(
@@ -292,7 +291,7 @@ cards_registry = [
             CardLink(name='LABORATORY'),
             CardLink(name='ARCHERY RANGE'),
         ],
-        rewards=[Invention(invention_type=InventionType.GEAR)],
+        rewards=[Invention(inventions=[InventionType.GEAR])],
         price=[ResourceType.GLASS],
     ),
     Card(
@@ -301,7 +300,7 @@ cards_registry = [
         epoch=1,
         players_limit=3,
         chain_next=[CardLink(name='COURTHOUSE'), CardLink(name='LIBRARY')],
-        rewards=[Invention(invention_type=InventionType.RUNES)],
+        rewards=[Invention(inventions=[InventionType.RUNES])],
         price=[ResourceType.PAPYRUS],
     ),
     Card(
@@ -310,7 +309,7 @@ cards_registry = [
         epoch=1,
         players_limit=4,
         chain_next=[CardLink(name='COURTHOUSE'), CardLink(name='LIBRARY')],
-        rewards=[Invention(invention_type=InventionType.RUNES)],
+        rewards=[InventionType.RUNES],
         price=[ResourceType.PAPYRUS],
     ),
     ## red

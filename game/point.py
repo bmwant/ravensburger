@@ -13,8 +13,8 @@ class InventionType(Enum):
 
 
 class Invention(object):
-    def __init__(self, invention_type):
-        self.invention_type = invention_type
+    def __init__(self, inventions):
+        self.inventions = inventions
 
 
 class War(object):
