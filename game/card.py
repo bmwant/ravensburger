@@ -136,6 +136,49 @@ cards_registry = [
         price_coins=1,
         rewards=[Resource(produce=[ResourceType.STONE, ResourceType.WOOD])],
     ),
+    ## grey
+    Card(
+        name='LOOM',
+        card_type=CardType.RAW,
+        epoch=1,
+        players_limit=3,
+        rewards=[Resource(produce=[ResourceType.TEXTILE])],
+    ),
+    Card(
+        name='LOOM',
+        card_type=CardType.RAW,
+        epoch=1,
+        players_limit=6,
+        rewards=[Resource(produce=[ResourceType.TEXTILE])],
+    ),
+    Card(
+        name='GLASSWORKS',
+        card_type=CardType.RAW,
+        epoch=1,
+        players_limit=3,
+        rewards=[Resource(produce=[ResourceType.GLASS])],
+    ),
+    Card(
+        name='GLASSWORKS',
+        card_type=CardType.RAW,
+        epoch=1,
+        players_limit=6,
+        rewards=[Resource(produce=[ResourceType.GLASS])],
+    ),
+    Card(
+        name='PRESS',
+        card_type=CardType.RAW,
+        epoch=1,
+        players_limit=3,
+        rewards=[Resource(produce=[ResourceType.PAPYRUS])],
+    ),
+    Card(
+        name='PRESS',
+        card_type=CardType.RAW,
+        epoch=1,
+        players_limit=6,
+        rewards=[Resource(produce=[ResourceType.PAPYRUS])],
+    ),
 ]
 
 
