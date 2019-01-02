@@ -28,10 +28,13 @@ class Card(object):
         self.name = name
         self.card_type = card_type
         self.epoch = epoch
-        self.players_limit = players_limit
+        self.players_limit = players_limit  # lower limit for players number
         self.rewards = rewards or []
         self.price = price or []
         self.chain_next = chain_next or []
+
+    def __str__(self):
+        return f'{self.name} {self.players_limit}+'
 
 
 cards_registry = [

@@ -17,6 +17,9 @@ class Location(object):
         self.resource = resource
         self.stages = stages
 
+    def __str__(self):
+        return f'Location {self.name}'
+
 
 locations_a = [
     Location(
