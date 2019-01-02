@@ -1,7 +1,7 @@
 from enum import Enum
 
 from game import Resource, ResourceType, Invention, InventionType
-from game import Point, Coin, War
+from game import Point, Coin, Discount, War
 
 
 class CardType(Enum):
@@ -276,7 +276,10 @@ cards_registry = [
         card_type=CardType.SCIENTIFIC_BUILDINGS,
         epoch=1,
         players_limit=3,
-        chain_next=[CardLink(name='LABORATORY'), CardLink(name='ARCHERY RANGE')],
+        chain_next=[
+            CardLink(name='LABORATORY'),
+            CardLink(name='ARCHERY RANGE'),
+        ],
         rewards=[Invention(invention_type=InventionType.GEAR)],
         price=[ResourceType.GLASS],
     ),
@@ -285,7 +288,10 @@ cards_registry = [
         card_type=CardType.SCIENTIFIC_BUILDINGS,
         epoch=1,
         players_limit=7,
-        chain_next=[CardLink(name='LABORATORY'), CardLink(name='ARCHERY RANGE')],
+        chain_next=[
+            CardLink(name='LABORATORY'),
+            CardLink(name='ARCHERY RANGE'),
+        ],
         rewards=[Invention(invention_type=InventionType.GEAR)],
         price=[ResourceType.GLASS],
     ),
@@ -355,5 +361,141 @@ cards_registry = [
         players_limit=5,
         rewards=[War(amount=1)],
         price=[ResourceType.ORE],
+    ),
+    ## yellow
+    Card(
+        name='TAVERN',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=4,
+        rewards=[Coin(value=5)],
+    ),
+    Card(
+        name='TAVERN',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=5,
+        rewards=[Coin(value=5)],
+    ),
+    Card(
+        name='TAVERN',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=7,
+        rewards=[Coin(value=5)],
+    ),
+    Card(
+        name='MARKETPLACE',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=3,
+        rewards=[
+            Discount(
+                price=1,
+                items=[
+                    ResourceType.GLASS,
+                    ResourceType.TEXTILE,
+                    ResourceType.PAPYRUS,
+                ],
+                left=True,
+                right=True,
+            )
+        ],
+        chain_next=[CardLink('CARAVANSERY')],
+    ),
+    Card(
+        name='MARKETPLACE',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=6,
+        rewards=[
+            Discount(
+                price=1,
+                items=[
+                    ResourceType.GLASS,
+                    ResourceType.TEXTILE,
+                    ResourceType.PAPYRUS,
+                ],
+                left=True,
+                right=True,
+            )
+        ],
+        chain_next=[CardLink('CARAVANSERY')],
+    ),
+    Card(
+        name='WEST TRADING POST',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=3,
+        rewards=[
+            Discount(
+                price=1,
+                items=[
+                    ResourceType.CLAY,
+                    ResourceType.STONE,
+                    ResourceType.WOOD,
+                    ResourceType.ORE,
+                ],
+                left=True,
+            )
+        ],
+        chain_next=[CardLink('FORUM')],
+    ),
+    Card(
+        name='WEST TRADING POST',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=7,
+        rewards=[
+            Discount(
+                price=1,
+                items=[
+                    ResourceType.CLAY,
+                    ResourceType.STONE,
+                    ResourceType.WOOD,
+                    ResourceType.ORE,
+                ],
+                left=True,
+            )
+        ],
+        chain_next=[CardLink('FORUM')],
+    ),
+    Card(
+        name='EAST TRADING POST',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=3,
+        rewards=[
+            Discount(
+                price=1,
+                items=[
+                    ResourceType.CLAY,
+                    ResourceType.STONE,
+                    ResourceType.WOOD,
+                    ResourceType.ORE,
+                ],
+                right=True,
+            )
+        ],
+        chain_next=[CardLink('FORUM')],
+    ),
+    Card(
+        name='EAST TRADING POST',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=1,
+        players_limit=7,
+        rewards=[
+            Discount(
+                price=1,
+                items=[
+                    ResourceType.CLAY,
+                    ResourceType.STONE,
+                    ResourceType.WOOD,
+                    ResourceType.ORE,
+                ],
+                right=True,
+            )
+        ],
+        chain_next=[CardLink('FORUM')],
     ),
 ]
