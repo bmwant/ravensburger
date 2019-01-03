@@ -1,4 +1,4 @@
 from .resource import Resource, ResourceType
-from .point import Point, Invention, InventionType, War
-from .coin import Coin, Discount, ColorMatch
+from .point import Point, Invention, InventionType, War, WarPoint
+from .coin import Coin, Discount, CardMatch, StageBonus
 from .card import Card, CardType, CardLink

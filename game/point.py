@@ -20,3 +20,8 @@ class Invention(object):
 class War(object):
     def __init__(self, amount):
         self.amount = amount
+
+
+class WarPoint(object):
+    def __init__(self, value):
+        self.value = value

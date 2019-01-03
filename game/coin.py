@@ -1,5 +1,5 @@
 
-
+# todo (misha): number value
 class Coin(object):
     def __init__(self, value):
         self.value = value
@@ -23,13 +23,25 @@ class Discount(object):
         self.items = items or []
 
 
-class ColorMatch(object):
+# todo (misha): unify both
+class CardMatch(object):
     def __init__(
-            self, price, card_type,
+            self, rewards, card_type,
             left: bool=False, bottom: bool=False, right: bool=False,
     ):
-        self.price = price
+        self.rewards = rewards
         self.card_type = card_type
+        self.left = left
+        self.bottom = bottom
+        self.right = right
+
+
+class StageBonus(object):
+    def __init__(
+            self, rewards,
+            left: bool=False, bottom: bool=False, right: bool=False,
+    ):
+        self.rewards = rewards
         self.left = left
         self.bottom = bottom
         self.right = right

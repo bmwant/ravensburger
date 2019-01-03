@@ -1,6 +1,6 @@
 from game import Card, CardType, CardLink
 from game import Resource, ResourceType, Invention, InventionType
-from game import Point, Coin, Discount, War, ColorMatch
+from game import Point, Coin, Discount, War, WarPoint, CardMatch, StageBonus
 
 
 cards_registry = [
@@ -806,9 +806,9 @@ cards_registry = [
         epoch=2,
         players_limit=4,
         rewards=[
-            ColorMatch(
-                price=2,
-                card_type=CardType.RAW,  # todo (misha): raw not raw
+            CardMatch(
+                rewards=[Coin(value=2)],
+                card_type=CardType.GOODS,  # grey
                 left=True,
                 bottom=True,
                 right=True,
@@ -821,9 +821,9 @@ cards_registry = [
         epoch=2,
         players_limit=7,
         rewards=[
-            ColorMatch(
-                price=2,
-                card_type=CardType.RAW,  # todo (misha): raw not raw
+            CardMatch(
+                rewards=[Coin(value=2)],
+                card_type=CardType.GOODS,  # grey
                 left=True,
                 bottom=True,
                 right=True,
@@ -836,8 +836,8 @@ cards_registry = [
         epoch=2,
         players_limit=3,
         rewards=[
-            ColorMatch(
-                price=1,
+            CardMatch(
+                rewards=[Coin(value=1)],
                 card_type=CardType.RAW,  # brown
                 left=True,
                 bottom=True,
@@ -851,8 +851,8 @@ cards_registry = [
         epoch=2,
         players_limit=6,
         rewards=[
-            ColorMatch(
-                price=1,
+            CardMatch(
+                rewards=[Coin(value=1)],
                 card_type=CardType.RAW,  # brown
                 left=True,
                 bottom=True,
@@ -964,5 +964,739 @@ cards_registry = [
         ],
         price=[ResourceType.CLAY, ResourceType.CLAY],
         chain_next=[CardLink('HAVEN')],
+    ),
+    # epoch III
+    ## blue
+    Card(
+        name='PANTHEON',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Point(value=7)],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.ORE,
+            ResourceType.GLASS,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='PANTHEON',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=6,
+        rewards=[Point(value=7)],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.ORE,
+            ResourceType.GLASS,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='GARDENS',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Point(value=5)],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.WOOD,
+        ],
+    ),
+    Card(
+        name='GARDENS',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=4,
+        rewards=[Point(value=5)],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.WOOD,
+        ],
+    ),
+    Card(
+        name='SENATE',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Point(value=6)],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.STONE,
+            ResourceType.ORE,
+        ],
+    ),
+    Card(
+        name='SENATE',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=5,
+        rewards=[Point(value=6)],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.STONE,
+            ResourceType.ORE,
+        ],
+    ),
+    Card(
+        name='PALACE',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Point(value=8)],
+        price=[
+            ResourceType.STONE,
+            ResourceType.ORE,
+            ResourceType.WOOD,
+            ResourceType.CLAY,
+            ResourceType.GLASS,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='PALACE',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=7,
+        rewards=[Point(value=8)],
+        price=[
+            ResourceType.STONE,
+            ResourceType.ORE,
+            ResourceType.WOOD,
+            ResourceType.CLAY,
+            ResourceType.GLASS,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='TOWN HALL',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Point(value=6)],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.ORE,
+            ResourceType.GLASS,
+        ],
+    ),
+    Card(
+        name='TOWN HALL',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=5,
+        rewards=[Point(value=6)],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.ORE,
+            ResourceType.GLASS,
+        ],
+    ),
+    Card(
+        name='TOWN HALL',
+        card_type=CardType.PUBLIC_BUILDINGS,
+        epoch=3,
+        players_limit=6,
+        rewards=[Point(value=6)],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.ORE,
+            ResourceType.GLASS,
+        ],
+    ),
+    ## green
+    Card(
+        name='ACADEMY',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Invention(inventions=[InventionType.METER])],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.GLASS,
+        ],
+    ),
+    Card(
+        name='ACADEMY',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=7,
+        rewards=[Invention(inventions=[InventionType.METER])],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.GLASS,
+        ],
+    ),
+    Card(
+        name='LODGE',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Invention(inventions=[InventionType.METER])],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='LODGE',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=6,
+        rewards=[Invention(inventions=[InventionType.METER])],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='UNIVERSITY',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Invention(inventions=[InventionType.RUNES])],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.PAPYRUS,
+            ResourceType.GLASS,
+        ],
+    ),
+    Card(
+        name='UNIVERSITY',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=4,
+        rewards=[Invention(inventions=[InventionType.RUNES])],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.PAPYRUS,
+            ResourceType.GLASS,
+        ],
+    ),
+    Card(
+        name='STUDY',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Invention(inventions=[InventionType.GEAR])],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='STUDY',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=5,
+        rewards=[Invention(inventions=[InventionType.GEAR])],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='OBSERVATORY',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[Invention(inventions=[InventionType.GEAR])],
+        price=[
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.GLASS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='OBSERVATORY',
+        card_type=CardType.SCIENTIFIC_BUILDINGS,
+        epoch=3,
+        players_limit=7,
+        rewards=[Invention(inventions=[InventionType.GEAR])],
+        price=[
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.GLASS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    ## red
+    Card(
+        name='SIEGE WORKSHOP',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.WOOD,
+        ],
+    ),
+    Card(
+        name='SIEGE WORKSHOP',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=5,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.WOOD,
+        ],
+    ),
+    Card(
+        name='FORTIFICATIONS',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.STONE,
+        ],
+    ),
+    Card(
+        name='FORTIFICATIONS',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=7,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.STONE,
+        ],
+    ),
+    Card(
+        name='CIRCUS',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=4,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.ORE,
+        ],
+    ),
+    Card(
+        name='CIRCUS',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=5,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.ORE,
+        ],
+    ),
+    Card(
+        name='CIRCUS',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=6,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.ORE,
+        ],
+    ),
+    Card(
+        name='ARSENAL',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.ORE,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='ARSENAL',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=4,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.ORE,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='ARSENAL',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=3,
+        players_limit=7,
+        rewards=[War(amount=3)],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.ORE,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    ## yellow
+    Card(
+        name='ARENA',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[StageBonus(rewards=[Coin(value=3), Point(value=1)])],
+        price=[ResourceType.STONE, ResourceType.STONE, ResourceType.ORE],
+    ),
+    Card(
+        name='ARENA',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=5,
+        rewards=[StageBonus(rewards=[Coin(value=3), Point(value=1)])],
+        price=[ResourceType.STONE, ResourceType.STONE, ResourceType.ORE],
+    ),
+    Card(
+        name='ARENA',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=7,
+        rewards=[StageBonus(rewards=[Coin(value=3), Point(value=1)])],
+        price=[ResourceType.STONE, ResourceType.STONE, ResourceType.ORE],
+    ),
+    Card(
+        name='LIGHTHOUSE',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[
+            CardMatch(
+                card_type=CardType.TRADING_BUILDINGS,  # yellow
+                rewards=[Coin(value=1), Point(value=1)],
+                bottom=True,
+            )
+        ],
+        price=[ResourceType.STONE, ResourceType.GLASS],
+    ),
+    Card(
+        name='LIGHTHOUSE',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=6,
+        rewards=[
+            CardMatch(
+                card_type=CardType.TRADING_BUILDINGS,  # yellow
+                rewards=[Coin(value=1), Point(value=1)],
+                bottom=True,
+            )
+        ],
+        price=[ResourceType.STONE, ResourceType.GLASS],
+    ),
+    Card(
+        name='CHAMBER OF COMMERCE',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=4,
+        rewards=[
+            CardMatch(
+                card_type=CardType.GOODS,  # grey
+                rewards=[Coin(value=2), Point(value=2)],
+                bottom=True,
+            )
+        ],
+        price=[ResourceType.CLAY, ResourceType.CLAY, ResourceType.PAPYRUS],
+    ),
+    Card(
+        name='CHAMBER OF COMMERCE',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=6,
+        rewards=[
+            CardMatch(
+                card_type=CardType.GOODS,  # grey
+                rewards=[Coin(value=2), Point(value=2)],
+                bottom=True,
+            )
+        ],
+        price=[ResourceType.CLAY, ResourceType.CLAY, ResourceType.PAPYRUS],
+    ),
+    Card(
+        name='HAVEN',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=3,
+        rewards=[
+            CardMatch(
+                card_type=CardType.RAW,  # brown
+                rewards=[Coin(value=1), Point(value=1)],
+                bottom=True,
+            )
+        ],
+        price=[ResourceType.WOOD, ResourceType.ORE, ResourceType.TEXTILE],
+    ),
+    Card(
+        name='HAVEN',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=3,
+        players_limit=4,
+        rewards=[
+            CardMatch(
+                card_type=CardType.RAW,  # brown
+                rewards=[Coin(value=1), Point(value=1)],
+                bottom=True,
+            )
+        ],
+        price=[ResourceType.WOOD, ResourceType.ORE, ResourceType.TEXTILE],
+    ),
+    ## violet
+    Card(
+        name='TRADERS GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            CardMatch(
+                card_type=CardType.TRADING_BUILDINGS,  # yellow
+                rewards=[Point(value=1)],
+                left=True,
+                right=True,
+            )
+        ],
+        price=[ResourceType.GLASS, ResourceType.TEXTILE, ResourceType.PAPYRUS],
+    ),
+    Card(
+        name='SPIES GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            CardMatch(
+                card_type=CardType.MILITARY_BUILDINGS,  # red
+                rewards=[Point(value=1)],
+                left=True,
+                right=True,
+            )
+        ],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.GLASS,
+        ],
+    ),
+    Card(
+        name='PHILOSOPHERS GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            CardMatch(
+                card_type=CardType.SCIENTIFIC_BUILDINGS,  # green
+                rewards=[Point(value=1)],
+                left=True,
+                right=True,
+            )
+        ],
+        price=[
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.PAPYRUS,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='MAGISTRATES GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            CardMatch(
+                card_type=CardType.PUBLIC_BUILDINGS,  # blue
+                rewards=[Point(value=1)],
+                left=True,
+                right=True,
+            )
+        ],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.STONE,
+            ResourceType.TEXTILE,
+        ],
+    ),
+    Card(
+        name='CRAFTSMENS GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            CardMatch(
+                card_type=CardType.GOODS,  # grey
+                rewards=[Point(value=2)],
+                left=True,
+                right=True,
+            )
+        ],
+        price=[
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.STONE,
+            ResourceType.STONE,
+        ],
+    ),
+    Card(
+        name='WORKERS GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            CardMatch(
+                card_type=CardType.RAW,  # brown
+                rewards=[Point(value=1)],
+                left=True,
+                right=True,
+            )
+        ],
+        price=[
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.CLAY,
+            ResourceType.STONE,
+            ResourceType.WOOD,
+        ],
+    ),
+    Card(
+        name='SHIPOWNERS GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            CardMatch(
+                card_type=CardType.RAW,  # brown
+                rewards=[Point(value=1)],
+                bottom=True,
+            ),
+            CardMatch(
+                card_type=CardType.GOODS,  # grey
+                rewards=[Point(value=1)],
+                bottom=True,
+            ),
+            CardMatch(
+                card_type=CardType.GUILD,  # violet
+                rewards=[Point(value=1)],
+                bottom=True,
+            ),
+        ],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.GLASS,
+            ResourceType.PAPYRUS,
+        ],
+    ),
+    Card(
+        name='BUILDERS GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            StageBonus(
+                rewards=[Point(value=1)],
+                left=True,
+                bottom=True,
+                right=True,
+            )
+        ],
+        price=[
+            ResourceType.STONE,
+            ResourceType.STONE,
+            ResourceType.CLAY,
+            ResourceType.CLAY,
+            ResourceType.GLASS,
+        ],
+    ),
+    Card(
+        name='SCIENTISTS GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            Invention(  # todo (misha): one of
+                inventions=[
+                    InventionType.METER,
+                    InventionType.RUNES,
+                    InventionType.GEAR,
+                ]
+            )
+        ],
+        price=[
+            ResourceType.WOOD,
+            ResourceType.WOOD,
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.PAPYRUS,
+        ],
+    ),
+    Card(
+        name='STRATEGISTS GUILD',
+        card_type=CardType.GUILD,
+        epoch=3,
+        players_limit=0,
+        rewards=[
+            CardMatch(
+                card_type=WarPoint(value=-1),
+                rewards=[Point(value=1)],
+                left=True,
+                right=True,
+            )
+        ],
+        price=[
+            ResourceType.ORE,
+            ResourceType.ORE,
+            ResourceType.STONE,
+            ResourceType.TEXTILE,
+        ],
     ),
 ]
