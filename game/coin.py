@@ -21,3 +21,15 @@ class Discount(object):
         self.left = left
         self.right = right
         self.items = items or []
+
+
+class ColorMatch(object):
+    def __init__(
+            self, price, card_type,
+            left: bool=False, bottom: bool=False, right: bool=False,
+    ):
+        self.price = price
+        self.card_type = card_type
+        self.left = left
+        self.bottom = bottom
+        self.right = right

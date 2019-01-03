@@ -1,6 +1,6 @@
 from game import Card, CardType, CardLink
 from game import Resource, ResourceType, Invention, InventionType
-from game import Point, Coin, Discount, War
+from game import Point, Coin, Discount, War, ColorMatch
 
 
 cards_registry = [
@@ -722,5 +722,247 @@ cards_registry = [
         ],
     ),
     ## red
+    Card(
+        name='ARCHERY RANGE',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=3,
+        rewards=[War(amount=2)],
+        price=[ResourceType.WOOD, ResourceType.WOOD, ResourceType.ORE],
+    ),
+    Card(
+        name='ARCHERY RANGE',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=6,
+        rewards=[War(amount=2)],
+        price=[ResourceType.WOOD, ResourceType.WOOD, ResourceType.ORE],
+    ),
+    Card(
+        name='STABLES',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=3,
+        rewards=[War(amount=2)],
+        price=[ResourceType.CLAY, ResourceType.WOOD, ResourceType.ORE],
+    ),
+    Card(
+        name='STABLES',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=5,
+        rewards=[War(amount=2)],
+        price=[ResourceType.CLAY, ResourceType.WOOD, ResourceType.ORE],
+    ),
+    Card(
+        name='WALLS',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=3,
+        rewards=[War(amount=2)],
+        price=[ResourceType.STONE, ResourceType.STONE, ResourceType.STONE],
+        chain_next=[CardLink(name='FORTIFICATIONS')],
+    ),
+    Card(
+        name='WALLS',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=7,
+        rewards=[War(amount=2)],
+        price=[ResourceType.STONE, ResourceType.STONE, ResourceType.STONE],
+        chain_next=[CardLink(name='FORTIFICATIONS')],
+    ),
+    Card(
+        name='TRAINING GROUND',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=4,
+        rewards=[War(amount=2)],
+        price=[ResourceType.ORE, ResourceType.ORE, ResourceType.WOOD],
+        chain_next=[CardLink(name='CIRCUS')],
+    ),
+    Card(
+        name='TRAINING GROUND',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=6,
+        rewards=[War(amount=2)],
+        price=[ResourceType.ORE, ResourceType.ORE, ResourceType.WOOD],
+        chain_next=[CardLink(name='CIRCUS')],
+    ),
+    Card(
+        name='TRAINING GROUND',
+        card_type=CardType.MILITARY_BUILDINGS,
+        epoch=2,
+        players_limit=7,
+        rewards=[War(amount=2)],
+        price=[ResourceType.ORE, ResourceType.ORE, ResourceType.WOOD],
+        chain_next=[CardLink(name='CIRCUS')],
+    ),
     ## yellow
+    Card(
+        name='BAZAR',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=4,
+        rewards=[
+            ColorMatch(
+                price=2,
+                card_type=CardType.RAW,  # todo (misha): raw not raw
+                left=True,
+                bottom=True,
+                right=True,
+            )
+        ]
+    ),
+    Card(
+        name='BAZAR',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=7,
+        rewards=[
+            ColorMatch(
+                price=2,
+                card_type=CardType.RAW,  # todo (misha): raw not raw
+                left=True,
+                bottom=True,
+                right=True,
+            )
+        ]
+    ),
+    Card(
+        name='VINEYARD',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=3,
+        rewards=[
+            ColorMatch(
+                price=1,
+                card_type=CardType.RAW,  # brown
+                left=True,
+                bottom=True,
+                right=True,
+            )
+        ]
+    ),
+    Card(
+        name='VINEYARD',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=6,
+        rewards=[
+            ColorMatch(
+                price=1,
+                card_type=CardType.RAW,  # brown
+                left=True,
+                bottom=True,
+                right=True,
+            )
+        ]
+    ),
+    Card(
+        name='CARAVANSERY',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=3,
+        rewards=[
+            Resource(
+                produce=[  # todo (misha): one of
+                    ResourceType.WOOD,
+                    ResourceType.STONE,
+                    ResourceType.ORE,
+                    ResourceType.CLAY,
+                ]
+            )
+        ],
+        price=[ResourceType.WOOD, ResourceType.WOOD],
+        chain_next=[CardLink('LIGHTHOUSE')],
+    ),
+    Card(
+        name='CARAVANSERY',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=5,
+        rewards=[
+            Resource(
+                produce=[  # todo (misha): one of
+                    ResourceType.WOOD,
+                    ResourceType.STONE,
+                    ResourceType.ORE,
+                    ResourceType.CLAY,
+                ]
+            )
+        ],
+        price=[ResourceType.WOOD, ResourceType.WOOD],
+        chain_next=[CardLink('LIGHTHOUSE')],
+    ),
+    Card(
+        name='CARAVANSERY',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=6,
+        rewards=[
+            Resource(
+                produce=[  # todo (misha): one of
+                    ResourceType.WOOD,
+                    ResourceType.STONE,
+                    ResourceType.ORE,
+                    ResourceType.CLAY,
+                ]
+            )
+        ],
+        price=[ResourceType.WOOD, ResourceType.WOOD],
+        chain_next=[CardLink('LIGHTHOUSE')],
+    ),
+    Card(
+        name='FORUM',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=3,
+        rewards=[
+            Resource(
+                produce=[  # todo (misha): one of
+                    ResourceType.GLASS,
+                    ResourceType.TEXTILE,
+                    ResourceType.PAPYRUS,
+                ]
+            )
+        ],
+        price=[ResourceType.CLAY, ResourceType.CLAY],
+        chain_next=[CardLink('HAVEN')],
+    ),
+    Card(
+        name='FORUM',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=6,
+        rewards=[
+            Resource(
+                produce=[  # todo (misha): one of
+                    ResourceType.GLASS,
+                    ResourceType.TEXTILE,
+                    ResourceType.PAPYRUS,
+                ]
+            )
+        ],
+        price=[ResourceType.CLAY, ResourceType.CLAY],
+        chain_next=[CardLink('HAVEN')],
+    ),
+    Card(
+        name='FORUM',
+        card_type=CardType.TRADING_BUILDINGS,
+        epoch=2,
+        players_limit=7,
+        rewards=[
+            Resource(
+                produce=[  # todo (misha): one of
+                    ResourceType.GLASS,
+                    ResourceType.TEXTILE,
+                    ResourceType.PAPYRUS,
+                ]
+            )
+        ],
+        price=[ResourceType.CLAY, ResourceType.CLAY],
+        chain_next=[CardLink('HAVEN')],
+    ),
 ]
