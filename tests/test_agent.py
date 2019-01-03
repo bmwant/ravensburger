@@ -1,4 +1,4 @@
-from game.agent import RandomActionAgent
+from game.agent import RandomActionAgentV0
 from game.card import Card, CardType
 from game import ResourceType
 
@@ -12,7 +12,7 @@ def test_can_take_card_with_resources():
         price=[ResourceType.CLAY]
     )
 
-    agent = RandomActionAgent(name='Smith')
+    agent = RandomActionAgentV0(name='Smith')
     agent._resources = [ResourceType.CLAY]
 
     assert agent.can_play(card)
@@ -27,7 +27,7 @@ def test_cannot_take_card_with_resources():
         price=[ResourceType.CLAY]
     )
 
-    agent = RandomActionAgent(name='Smith')
+    agent = RandomActionAgentV0(name='Smith')
     agent._resources = [ResourceType.ORE]
 
     assert not agent.can_play(card)
