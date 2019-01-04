@@ -3,7 +3,7 @@ from enum import Enum
 
 import click
 
-from game import Coin, War, WarPoint, CardType, ResourceType
+from game import Coin, War, Point, WarPoint, CardType, ResourceType
 
 
 class Agent(ABC):
@@ -66,7 +66,6 @@ class RandomActionAgentV0(Agent):
                 for reward in card.rewards:
                     if isinstance(reward, War):
                         value += reward
-                        print('adding reward')
         # todo (misha): add war from stages
         return value
 
@@ -77,10 +76,19 @@ class RandomActionAgentV0(Agent):
             value += p
         return value
 
+    @property
+    def public_points(self):
+        points = Point(value=0)
+        # todo (misha): extract reward helper?
+        for card in self._played_cards:
+            if card.card_type == CardType.PUBLIC_BUILDINGS:
+                for reward in card.rewards:
+                    if isinstance(reward, Point):
+                        points += reward
+        return points
+
     def can_play(self, card):
         price = card.price
-        if card.card_type == CardType.MILITARY_BUILDINGS:
-            print('Considering war', card.price, self.resources)
         for item in price:
             # todo (misha): check chain next first
             if isinstance(item, Coin) and self.coins < item:

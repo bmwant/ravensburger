@@ -1,9 +1,9 @@
 from functools import partial
 from collections import deque
-from random import sample
+from random import sample, shuffle
 
 import click
-from terminaltables.other_tables import SingleTable, PorcelainTable
+from terminaltables.other_tables import SingleTable
 
 from game import Coin, CardType, WarPoint
 from game.registry import cards_registry
@@ -51,6 +51,7 @@ class Game(object):
         if epoch == 3:
             self._cards.extend(select_guild_cards(self.players_count))
 
+        shuffle(self._cards)
         partition = len(self._cards) // self.players_count
         assert partition == 7
         for i in range(self.players_count):
@@ -103,11 +104,33 @@ class Game(object):
             header.append(player.name)
         data.append(header)
 
-        war_data = [click.style('█', fg='red')]
+        war_data = [click.style('██', fg='red')]
         for player in self.players:
             war_data.append(str(player.war_points))
-
         data.append(war_data)
+
+        coin_data = [click.style('⬤ ', fg='yellow')]
+        for player in self.players:
+            coin_data.append(player.coins.to_points())
+        data.append(coin_data)
+
+        stages_data = [click.style('⨞', fg='yellow')]
+        data.append(stages_data)
+
+        public_data = [click.style('██', fg='blue')]
+        for player in self.players:
+            public_data.append(player.public_points)
+        data.append(public_data)
+
+        trading_data = [click.style('██', fg='yellow')]
+        data.append(trading_data)
+
+        guild_data = [click.style('██', fg='magenta')]
+        data.append(guild_data)
+
+        science_data = [click.style('██', fg='green')]
+        data.append(science_data)
+
         tbl = SingleTable(data)
 
         click.echo(tbl.table)

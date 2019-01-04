@@ -13,6 +13,9 @@ class Coin(object):
     def __add__(self, other):
         return self.__class__(self.value+other.value)
 
+    def to_points(self):
+        return self.value // 3
+
 
 class Discount(object):
     def __init__(self, price, items=None,
