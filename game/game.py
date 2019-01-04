@@ -129,6 +129,8 @@ class Game(object):
         data.append(guild_data)
 
         science_data = [click.style('██', fg='green')]
+        for player in self.players:
+            science_data.append(player.science_points)
         data.append(science_data)
 
         tbl = SingleTable(data)

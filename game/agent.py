@@ -4,6 +4,7 @@ from enum import Enum
 import click
 
 from game import Coin, War, Point, WarPoint, CardType, ResourceType
+from game import Invention, InventionType
 
 
 class Agent(ABC):
@@ -85,6 +86,21 @@ class RandomActionAgentV0(Agent):
                 for reward in card.rewards:
                     if isinstance(reward, Point):
                         points += reward
+        return points
+
+    @property
+    def science_points(self):
+        points = Point(value=0)
+        inventions = []
+        # todo (misha): maximize points with OR operator
+        for card in self._played_cards:
+            if card.card_type == CardType.SCIENTIFIC_BUILDINGS:
+                for reward in card.rewards:
+                    if isinstance(reward, Invention):
+                        inventions.extend(reward.inventions)
+        for it in InventionType:
+            n = inventions.count(it)
+            points += Point(value=n*n)
         return points
 
     def can_play(self, card):
