@@ -15,5 +15,5 @@ def run():
         game.init_epoch(epoch)
         while not game.finished:
             game.step()
-        game.resolve_war()
+        game.resolve_war(epoch=epoch)
     game.finish()

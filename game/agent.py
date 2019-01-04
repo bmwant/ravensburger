@@ -3,7 +3,7 @@ from enum import Enum
 
 import click
 
-from game import Coin, ResourceType
+from game import Coin, War, CardType, ResourceType
 
 
 class Agent(ABC):
@@ -20,9 +20,11 @@ class RandomActionAgentV0(Agent):
     def __init__(self, name, color='white'):
         self.name = name
         self.location = None
-        self.coins = None
+        self.coins = Coin(value=0)
         self._cards = []
+        self._played_cards = []
         self._resources = []
+        self._war_points = []
         self._color = color
 
     def take(self, cards):
@@ -47,6 +49,17 @@ class RandomActionAgentV0(Agent):
     def cards(self):
         return self._cards
 
+    @property
+    def war(self):
+        value = War(value=0)
+        for card in self._played_cards:
+            if card.card_type == CardType.MILITARY_BUILDINGS:
+                for reward in card.rewards:
+                    if isinstance(reward, War):
+                        value += reward
+        # todo (misha): add war from stages
+        return value
+
     def can_play(self, card):
         price = card.price
         for item in price:
@@ -61,6 +74,7 @@ class RandomActionAgentV0(Agent):
 
     def play_card(self, card):
         click.secho(f'{self.name} is playing {card}', fg=self._color)
+        self._played_cards.append(card)
 
     def dispose_card(self):
         self.coins += Coin(value=3)

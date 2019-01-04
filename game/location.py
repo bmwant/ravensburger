@@ -203,7 +203,7 @@ locations_a = [
                 price=[ResourceType.WOOD, ResourceType.WOOD],
             ),
             Stage(
-                rewards=[War(amount=2)],
+                rewards=[War(value=2)],
                 price=[
                     ResourceType.CLAY,
                     ResourceType.CLAY,

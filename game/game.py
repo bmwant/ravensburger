@@ -4,13 +4,21 @@ from random import sample
 
 from click import secho
 
-from game import Coin
-from game.card import cards_registry
+from game import Coin, CardType, WarPoint
+from game.registry import cards_registry
 from game.location import locations_a
 
 
 def is_legit(card, epoch: int, players_count: int) -> bool:
-    return card.epoch == epoch and card.players_limit <= players_count
+    return card.epoch == epoch and \
+           card.players_limit <= players_count and \
+           card.card_type != CardType.GUILD
+
+
+def select_guild_cards(players_count: int) -> list:
+    cards = list(filter(
+        lambda c: c.card_type == CardType.GUILD, cards_registry))
+    return sample(cards, players_count+2)
 
 
 class Game(object):
@@ -19,6 +27,7 @@ class Game(object):
         self._cards = []
         self.verbose = verbose
         self._epoch_finished = False
+        self._rotate = 1
 
     def init_players(self):
         """
@@ -38,6 +47,9 @@ class Game(object):
             players_count=self.players_count,
         )
         self._cards = list(filter(cards_selector, cards_registry))
+        if epoch == 3:
+            self._cards.extend(select_guild_cards(self.players_count))
+
         partition = len(self._cards) // self.players_count
         assert partition == 7
         for i in range(self.players_count):
@@ -50,18 +62,39 @@ class Game(object):
             player.act()
         if len(self.players[0].cards) == 1:
             self._epoch_finished = True
+            # Change cards passing direction
+            self._rotate *= -1
             return
         self.shift_cards()
 
     def shift_cards(self):
-        self.print('Passing cards to next player clockwise')
+        direction = 'clockwise' if self._rotate == 1 else 'counterclockwise'
+        self.print(f'Passing cards to next player {direction}')
         cards = deque([player.cards for player in self.players])
-        cards.rotate(1)
+        cards.rotate(self._rotate)
         for player in self.players:
             player.take(cards.popleft())
 
-    def resolve_war(self):
-        pass
+    def resolve_war(self, epoch: int):
+        self.print('Resolving war')
+        for index, player in enumerate(self.players):
+            player_left = self.players[index-1]
+            player_right = self.players[(index+1) % self.players_count]
+            value_left = player_left.war
+            value_right = player_right.war
+            value = player.war
+            win_point = WarPoint(value=1+(epoch-1)*2)
+            lose_point = WarPoint(value=-1)
+
+            if value < value_left:
+                player._war_points.append(lose_point)
+            elif value > value_left:
+                player._war_points.append(win_point)
+
+            if value < value_right:
+                player._war_points.append(lose_point)
+            elif value > value_right:
+                player._war_points.append(win_point)
 
     def finish(self):
         pass

@@ -285,7 +285,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=1,
         players_limit=3,
-        rewards=[War(amount=1)],
+        rewards=[War(value=1)],
         price=[ResourceType.WOOD],
     ),
     Card(
@@ -293,7 +293,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=1,
         players_limit=7,
-        rewards=[War(amount=1)],
+        rewards=[War(value=1)],
         price=[ResourceType.WOOD],
     ),
     Card(
@@ -301,7 +301,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=1,
         players_limit=3,
-        rewards=[War(amount=1)],
+        rewards=[War(value=1)],
         price=[ResourceType.CLAY],
     ),
     Card(
@@ -309,7 +309,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=1,
         players_limit=4,
-        rewards=[War(amount=1)],
+        rewards=[War(value=1)],
         price=[ResourceType.CLAY],
     ),
     Card(
@@ -317,7 +317,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=1,
         players_limit=3,
-        rewards=[War(amount=1)],
+        rewards=[War(value=1)],
         price=[ResourceType.ORE],
     ),
     Card(
@@ -325,7 +325,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=1,
         players_limit=5,
-        rewards=[War(amount=1)],
+        rewards=[War(value=1)],
         price=[ResourceType.ORE],
     ),
     ## yellow
@@ -727,7 +727,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=3,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.WOOD, ResourceType.WOOD, ResourceType.ORE],
     ),
     Card(
@@ -735,7 +735,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=6,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.WOOD, ResourceType.WOOD, ResourceType.ORE],
     ),
     Card(
@@ -743,7 +743,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=3,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.CLAY, ResourceType.WOOD, ResourceType.ORE],
     ),
     Card(
@@ -751,7 +751,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=5,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.CLAY, ResourceType.WOOD, ResourceType.ORE],
     ),
     Card(
@@ -759,7 +759,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=3,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.STONE, ResourceType.STONE, ResourceType.STONE],
         chain_next=[CardLink(name='FORTIFICATIONS')],
     ),
@@ -768,7 +768,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=7,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.STONE, ResourceType.STONE, ResourceType.STONE],
         chain_next=[CardLink(name='FORTIFICATIONS')],
     ),
@@ -777,7 +777,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=4,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.ORE, ResourceType.ORE, ResourceType.WOOD],
         chain_next=[CardLink(name='CIRCUS')],
     ),
@@ -786,7 +786,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=6,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.ORE, ResourceType.ORE, ResourceType.WOOD],
         chain_next=[CardLink(name='CIRCUS')],
     ),
@@ -795,7 +795,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=2,
         players_limit=7,
-        rewards=[War(amount=2)],
+        rewards=[War(value=2)],
         price=[ResourceType.ORE, ResourceType.ORE, ResourceType.WOOD],
         chain_next=[CardLink(name='CIRCUS')],
     ),
@@ -1253,7 +1253,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=3,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.CLAY,
             ResourceType.CLAY,
@@ -1266,7 +1266,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=5,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.CLAY,
             ResourceType.CLAY,
@@ -1279,7 +1279,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=3,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.ORE,
             ResourceType.ORE,
@@ -1292,7 +1292,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=7,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.ORE,
             ResourceType.ORE,
@@ -1305,7 +1305,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=4,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.STONE,
             ResourceType.STONE,
@@ -1318,7 +1318,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=5,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.STONE,
             ResourceType.STONE,
@@ -1331,7 +1331,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=6,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.STONE,
             ResourceType.STONE,
@@ -1344,7 +1344,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=3,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.WOOD,
             ResourceType.WOOD,
@@ -1357,7 +1357,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=4,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.WOOD,
             ResourceType.WOOD,
@@ -1370,7 +1370,7 @@ cards_registry = [
         card_type=CardType.MILITARY_BUILDINGS,
         epoch=3,
         players_limit=7,
-        rewards=[War(amount=3)],
+        rewards=[War(value=3)],
         price=[
             ResourceType.WOOD,
             ResourceType.WOOD,
