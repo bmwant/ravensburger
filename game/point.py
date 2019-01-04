@@ -18,10 +18,14 @@ class NumberLike(object):
         cls = self.__class__
         return cls(value=self.value+other.value)
 
+    def __str__(self):
+        return str(self.value)
 
-class Point(object):
-    def __init__(self, value):
-        self.value = value
+
+class Point(NumberLike):
+    """
+    Winning points
+    """
 
 
 class InventionType(Enum):

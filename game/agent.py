@@ -3,7 +3,7 @@ from enum import Enum
 
 import click
 
-from game import Coin, War, CardType, ResourceType
+from game import Coin, War, WarPoint, CardType, ResourceType
 
 
 class Agent(ABC):
@@ -17,7 +17,7 @@ class Agent(ABC):
 
 
 class RandomActionAgentV0(Agent):
-    def __init__(self, name, color='white'):
+    def __init__(self, name, color='white', verbose=False):
         self.name = name
         self.location = None
         self.coins = Coin(value=0)
@@ -26,6 +26,7 @@ class RandomActionAgentV0(Agent):
         self._resources = []
         self._war_points = []
         self._color = color
+        self._verbose = verbose
 
     def take(self, cards):
         self._cards = cards
@@ -50,6 +51,14 @@ class RandomActionAgentV0(Agent):
         return self._cards
 
     @property
+    def resources(self):
+        resources = []
+        # todo (misha): implement one of
+        for r in self._resources:
+            resources.extend(r.produce)
+        return resources
+
+    @property
     def war(self):
         value = War(value=0)
         for card in self._played_cards:
@@ -57,26 +66,40 @@ class RandomActionAgentV0(Agent):
                 for reward in card.rewards:
                     if isinstance(reward, War):
                         value += reward
+                        print('adding reward')
         # todo (misha): add war from stages
+        return value
+
+    @property
+    def war_points(self):
+        value = WarPoint(value=0)
+        for p in self._war_points:
+            value += p
         return value
 
     def can_play(self, card):
         price = card.price
+        if card.card_type == CardType.MILITARY_BUILDINGS:
+            print('Considering war', card.price, self.resources)
         for item in price:
             # todo (misha): check chain next first
             if isinstance(item, Coin) and self.coins < item:
                 return False
-            elif isinstance(item, ResourceType) and item not in self._resources:
+            elif isinstance(item, ResourceType) and item not in self.resources:
                 # todo (misha): tbd
                 return False
 
         return True
 
+    def print(self, message):
+        if self._verbose:
+            click.secho(message, fg=self._color)
+
     def play_card(self, card):
-        click.secho(f'{self.name} is playing {card}', fg=self._color)
+        self.print(f'{self.name} is playing {card}')
         self._played_cards.append(card)
 
     def dispose_card(self):
         self.coins += Coin(value=3)
         self._cards.pop()
-        click.secho(f'{self.name} disposing card for 3 coins', fg=self._color)
+        self.print(f'{self.name} disposing card for 3 coins')

@@ -2,7 +2,8 @@ from functools import partial
 from collections import deque
 from random import sample
 
-from click import secho
+import click
+from terminaltables.other_tables import SingleTable, PorcelainTable
 
 from game import Coin, CardType, WarPoint
 from game.registry import cards_registry
@@ -85,7 +86,6 @@ class Game(object):
             value = player.war
             win_point = WarPoint(value=1+(epoch-1)*2)
             lose_point = WarPoint(value=-1)
-
             if value < value_left:
                 player._war_points.append(lose_point)
             elif value > value_left:
@@ -97,7 +97,20 @@ class Game(object):
                 player._war_points.append(win_point)
 
     def finish(self):
-        pass
+        data = []
+        header = ['']
+        for player in self.players:
+            header.append(player.name)
+        data.append(header)
+
+        war_data = [click.style('█', fg='red')]
+        for player in self.players:
+            war_data.append(str(player.war_points))
+
+        data.append(war_data)
+        tbl = SingleTable(data)
+
+        click.echo(tbl.table)
 
     @property
     def finished(self) -> bool:
@@ -109,4 +122,4 @@ class Game(object):
 
     def print(self, message):
         if self.verbose:
-            secho(str(message), bold=True)
+            click.secho(str(message), bold=True)

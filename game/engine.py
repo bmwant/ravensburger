@@ -9,7 +9,12 @@ def run():
         RandomActionAgentV0(name='Oksana', color='yellow'),
         RandomActionAgentV0(name='Vova', color='blue'),
     ]
-    game = Game(players=players)
+    from game import Resource, ResourceType
+    players[0]._resources = [Resource(produce=[ResourceType.CLAY, ResourceType.ORE])]
+    players[1]._resources = [Resource(produce=[ResourceType.CLAY, ResourceType.ORE])]
+    players[2]._resources = [Resource(produce=[ResourceType.CLAY, ResourceType.ORE])]
+    players[3]._resources = [Resource(produce=[ResourceType.CLAY, ResourceType.ORE])]
+    game = Game(players=players, verbose=False)
     game.init_players()
     for epoch in range(1, 4):
         game.init_epoch(epoch)

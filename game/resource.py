@@ -15,6 +15,8 @@ class Resource(object):
     def __init__(self, produce):
         self.produce = produce
 
+    def __str__(self):
+        return str(self.produce)
 
 resources = [
     Resource(produce=[ResourceType.ORE]),

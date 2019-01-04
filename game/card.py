@@ -33,5 +33,5 @@ class Card(object):
     def __str__(self):
         return f'{self.name} {self.players_limit}+'
 
-
-
+    def __repr__(self):
+        return f'[{self.epoch}] {self.name} {self.card_type}'
